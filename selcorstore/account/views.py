@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, UserRegistrationForm
+from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+from .models import Profile
 
 
 # View created for user login with authentication
@@ -47,6 +48,8 @@ def register(request):
             )
             # Saving user
             new_user.save()
+            # Creating user profile
+            profile = Profile.objects.create(user=new_user)
             return render(request,
                           'account/register_done.html',
                           {'new_user': new_user})
@@ -55,3 +58,6 @@ def register(request):
     return render(request,
                   'account/register.html',
                   {'user_form': user_form})
+
+
+# View for profile edition
