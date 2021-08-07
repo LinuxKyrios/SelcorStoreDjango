@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
+from django.contrib import messages
 
 
 # View created for user login with authentication
@@ -72,6 +73,10 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Uaktualnianie profilu '
+                                      'zakończyło się sukcesem.')
+        else:
+            messages.success(request, 'Wystąpił błąd podczas uaktualniania profilu.')
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
