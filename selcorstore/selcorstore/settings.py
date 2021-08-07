@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'selcorshop.apps.SelcorshopConfig',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # For adding pillow usage
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# Adding authentication backend with email authenticate
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
