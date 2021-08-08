@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Class model for category
@@ -13,9 +14,12 @@ class Category(models.Model):
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
-
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('selcorshop:product_list_by_category',
+                       args=[self.slug])
 
 
 # Class model for product
@@ -33,10 +37,13 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-
     class Meta:
         ordering = ('name',)
         index_together = (('id', 'slug'),)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('selcorshop:product_detail',
+                       args=[self.id, self.slug])
