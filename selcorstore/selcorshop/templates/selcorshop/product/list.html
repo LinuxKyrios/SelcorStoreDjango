@@ -1,4 +1,4 @@
-{% extend "base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}
@@ -13,7 +13,7 @@
             <a href="{% url 'selcorshop:product_list' %}">Wszystkie</a>
         </li>
         {% for c in categories %}
-        <li {% if category.slug = c.slug %}class="selected"{% endif %}>
+        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
             <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
         </li>
         {% endfor %}
@@ -24,7 +24,7 @@
     {% for product in products %}
         <div class="item">
             <a href="{{ product.get_absolute_url }}">
-                <img src="{% product.image %}{{ product.iamge.url }}{% else %}{% static 'img/no_image.png %}{% endif %}">
+                <img src="{% if product.image %}{{ product.iamge.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
             </a>
             <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
             {{ product.price }} zł.
