@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
+from cart.forms import CartAddProductForm
 
 
 # View for product list in site
@@ -23,6 +24,9 @@ def product_detail(request, id, slug):
                                 id = id,
                                 slug = slug,
                                 available = True)
+    # Add to cart button
+    cart_product_form = CartAddProductForm()
     return render(request,
                   'selcorshop/product/detail.html',
-                  {'product': product})
+                  {'product': product,
+                   'cart_product_form': cart_product_form})
