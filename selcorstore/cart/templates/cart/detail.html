@@ -51,6 +51,6 @@
     </table>
     <p class="text-right">
         <a href="{% url 'selcorshop:product_list' %}" class="button ligt">Kontynuuj zakupy</a>
-        <a href="#" class="button">Do kasy</a>
+        <a href="{% url 'orders:order_create' %}" class="button">Do kasy</a>
     </p>
 {% endblock %}
