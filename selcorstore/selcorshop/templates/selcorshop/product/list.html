@@ -7,19 +7,29 @@
 
 {% block content %}
 <div id="sidebar">
-    <h3>Kategorie</h3>
-    <ul>
-        <li {% if not category %}class="selected" {% endif %}>
-            <a href="{% url 'selcorshop:product_list' %}">Wszystkie</a>
-        </li>
-        {% for c in categories %}
-        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
-            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+<!--      <svg class="bi bi-list" width="40" height="32"><use xlink:href="#bootstrap"/></svg>-->
+      <span class="fs-4">Kategorie</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li {% if not category %}class="nav-item" {% endif %}>
+        <a href="{% url 'selcorshop:product_list' %}" class="nav-link active" aria-current="page">Wszystkie</a>
+      </li>
+      {% for c in categories %}
+      <li {% if category.slug == c.slug %} {% endif %}>
+        <a href="{{ c.get_absolute_url }}" class="nav-link text-white">{{ c.name }}</a>
+      </li>
+      {% endfor %}
+      </ul>
+    </div>
 </div>
-<div id="main" class="product_list">
+
+<div id="main" class="product_list float-center">
     <h1>{% if category %}{{ category.name }}{% else %}Produkty{% endif %}</h1>
     {% for product in products %}
         <div class="item">

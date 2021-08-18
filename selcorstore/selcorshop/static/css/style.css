@@ -1,0 +1,57 @@
+/* General rules */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+/* ... */
+body {
+    overflow-x: hidden;
+    background-color: lightgray;
+
+}
+
+/* Navigation */
+.navbar {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    background-color: black!important;
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    height: 1.8rem;
+}
+.navbar-nav li{
+    padding-right: 0.6rem;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: white;
+    padding-top: 0.6rem;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: lime;
+}
+
+#cart {
+    color: white;
+}
+
+/* Sidebar */
+#sidebar {
+    padding-top: 3rem;
+}
+hr {
+    margin: 1rem 0;
+    color: inherit;
+    background-color: white;
+    border: 0;
+    opacity: .25;
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+}
+
