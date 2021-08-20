@@ -6,13 +6,14 @@
 {% endblock %}
 
 {% block content %}
-<div id="sidebar">
+
+<div class="row">
+<div id="sidebar" class="col-2">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
-<!--      <svg class="bi bi-list" width="40" height="32"><use xlink:href="#bootstrap"/></svg>-->
       <span class="fs-4">Kategorie</span>
     </a>
     <hr>
@@ -29,16 +30,21 @@
     </div>
 </div>
 
-<div id="main" class="product_list float-center">
+<div id="main" class="product_list col-10">
     <h1>{% if category %}{{ category.name }}{% else %}Produkty{% endif %}</h1>
     {% for product in products %}
         <div class="item">
             <a href="{{ product.get_absolute_url }}">
-                <img src="{% if product.image %}{{ product.iamge.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="Obraz">
             </a>
             <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
             {{ product.price }} zł.
         </div>
     {% endfor %}
 </div>
+
+
+
+</div>
+
 {% endblock %}
