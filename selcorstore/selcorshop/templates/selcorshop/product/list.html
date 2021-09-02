@@ -17,16 +17,40 @@
       <span class="fs-4">Kategorie</span>
     </a>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li {% if not category %}class="nav-item" {% endif %}>
-        <a href="{% url 'selcorshop:product_list' %}" class="nav-link active" aria-current="page">Wszystkie</a>
-      </li>
-      {% for c in categories %}
-      <li {% if category.slug == c.slug %} {% endif %}>
-        <a href="{{ c.get_absolute_url }}" class="nav-link text-white">{{ c.name }}</a>
-      </li>
-      {% endfor %}
-      </ul>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li {% if not category %}class="nav-item" {% endif %}>
+                <a href="{% url 'selcorshop:product_list' %}" class="nav-link active" aria-current="page">Wszystkie</a>
+            </li>
+            <div class="dropdown">
+            {% for c in categories %}
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                <li {% if category.slug == c.slug %} {% endif %}>
+                    <a href="{{ c.get_absolute_url }}" class="nav-link text-white">{{ c.name }}</a>
+                </li>
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for s in subcategories %}
+                    <a class="dropdown-item" href="#">
+                        <li {% if subcategory.slug == s.slug %} {% endif %}>
+                            <a href="{{ s.get_absolute_url }}" class="nav-link text-black">{{ s.name }}</a>
+                        </li>
+                    </a>
+                    {% endfor %}
+                </div>
+          {% endfor %}
+          </div>
+        </ul>
+<!--    <ul class="nav nav-pills flex-column mb-auto">-->
+<!--      <li {% if not category %}class="nav-item" {% endif %}>-->
+<!--        <a href="{% url 'selcorshop:product_list' %}" class="nav-link active" aria-current="page">Wszystkie</a>-->
+<!--      </li>-->
+<!--      {% for c in categories %}-->
+<!--      <li {% if category.slug == c.slug %} {% endif %}>-->
+<!--        <a href="{{ c.get_absolute_url }}" class="nav-link text-white">{{ c.name }}</a>-->
+<!--      </li>-->
+<!--      {% endfor %}-->
+<!--      </ul>-->
     </div>
 </div>
 

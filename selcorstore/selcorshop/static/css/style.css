@@ -3,7 +3,7 @@
 /* ... */
 body {
     overflow-x: hidden;
-    background-color: white;
+    background-color: lightgray;
 
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 #cart {
-    color: white;
+    color: lightgray;
 }
 
 /* Sidebar */
